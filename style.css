@@ -1,0 +1,149 @@
+body{
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.month{
+ 
+  font-family: 'Inter', sans-serif;
+  margin: 0 15px 0 30px ;
+  height: 15px;
+  display: flex;
+  justify-content:space-around;
+  align-items: center;
+  color: #959494;
+  
+
+}
+.month h5{
+  padding: 10px;
+  margin: -5px;
+}
+.calendar{
+  display: flex;
+}
+.week-days {
+  height: 81px;
+  display: flex;
+  justify-content: space-between;
+  flex-direction: column;
+  font-family: 'Inter', sans-serif;
+  color: #959494;
+}
+
+.week-days h6 {
+  margin: 0;
+  padding: 1px 5px 23px 9px;
+  font-size: 12px; 
+}
+
+.graph {
+  top: 15px;
+  height: auto;
+  display: flex;
+  flex-wrap: wrap;
+  
+}
+
+.week {
+  margin: 1px;
+  height: 140px;
+  width: 18px;
+}
+
+.data {
+  position: relative;
+  height: 15px;
+  width: 15px;
+  background-color: #ededed;
+  margin: 2px 2px;
+  border: 1px solid #ededed ;
+}
+
+.data:hover {
+  border: 1px solid #00000080; 
+}
+.example{
+  margin: 0 0 0 33px;
+  font-family: 'Inter', sans-serif;
+  color: #959494;
+  font-size: 8px;
+  width: 180px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: -5px;
+  
+}
+.versions{
+ display: flex;
+  justify-content: space-between;
+
+}
+
+.data.v2{
+  background-color: #ACD5F2;
+}
+.data.v3{
+  background-color: #7FA8C9;
+}
+.data.v4{
+  background-color: #527BA0;
+}
+.data.v5{
+  background-color: #254E77;
+}
+
+.popup {
+  z-index: 3;
+
+  position: absolute;
+  width: 150px;
+  height: 50px;
+  background-color: black;
+  border-radius: 10px;
+  left: -68px;
+  bottom: 23px;
+  padding: 5px; 
+  box-sizing: border-box; 
+  text-align: center
+}
+
+.popup img {
+  
+    width: 10px;
+    position: absolute;
+    top: 50px;
+    right: 69px;
+  
+}
+.popup.hidden{
+  display: none;
+}
+/* .data:hover .popup {
+  display: block;
+  z-index: 2;
+  cursor: pointer;  
+} */
+
+.popup p {
+  font-size: 10px;
+  font-family: 'Inter', sans-serif;
+  color: #7C7C7C;
+  padding: 5px;
+  margin: 0;
+}
+
+.popup h6 {
+  height: 15px;
+  padding: 0;
+  display: flex;
+  justify-content: center;
+  top: -40px;
+  font-family: 'Inter', sans-serif;
+  color: #FFFFFF;
+  padding: 0;
+  margin: 0;
+}
