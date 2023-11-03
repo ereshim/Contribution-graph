@@ -1,3 +1,6 @@
+//создание календаря
+
+// 1) создание дат
 function generateDates(startDate, endDate) {
   const dates = [];
   let currentDate = new Date(startDate);
@@ -9,12 +12,9 @@ function generateDates(startDate, endDate) {
 
   return dates;
 }
-
 const dates = [];
-
 const startDate = new Date("2022-10-24");
 const endDate = new Date("2023-10-29");
-
 const datesArray = generateDates(startDate, endDate);
 
 datesArray.forEach((date) => {
@@ -22,11 +22,12 @@ datesArray.forEach((date) => {
 });
 
 generateDates();
-
+//получение элемента (графа)
 const graph = document.getElementById("graph");
 
 let start = 0;
 let length = 6;
+// 2) создание элементов календаря (неделя , дни )
 
 for (let i = 0; i < 53; i++) {
   const week = document.createElement("div");
@@ -38,7 +39,7 @@ for (let i = 0; i < 53; i++) {
     data.id = dates[j];
     const popup = `<div class="popup hidden"> 
     <h6> No contributions</h6>
-    <p>${formatDate(data.id)}</p>
+    <p>${formatDate(data.id)}</p> 
     <img src="./corner.png" alt="">
  </div>`;
     data.innerHTML = popup;
@@ -51,7 +52,7 @@ for (let i = 0; i < 53; i++) {
 }
 const week = document.querySelectorAll(".week");
 
-//форматирование даты
+//форматирование даты в буквенное выражение
 
 function formatDate(dateString) {
   const months = [
@@ -88,7 +89,7 @@ function formatDate(dateString) {
   return `${dayOfWeek}, ${month} ${day}, ${year}`;
 }
 
-// запрос на сервер
+//   3)запрос на сервер
 
 document.addEventListener("DOMContentLoaded", () => {
   async function fetchData(url) {
@@ -106,7 +107,7 @@ document.addEventListener("DOMContentLoaded", () => {
     .then((data) => {
       const contributions = document.querySelectorAll(".data");
       const keys = Object.entries(data);
-
+      // 4) Добавление контрибуций
       keys.map((key) => {
         for (item of contributions) {
           if (key[0] === item.id) {
@@ -121,36 +122,27 @@ document.addEventListener("DOMContentLoaded", () => {
           }
         }
       });
-
-      function remuveStyle(){
-        const popups = document.querySelectorAll('.popup')
-        for(item of popups){
-          item.classList = 'popup hidden'
+      // логика вызова всплывающего элемента (удаление и добавление стилей)
+      function remuveStyle() {
+        const popups = document.querySelectorAll(".popup");
+        for (item of popups) {
+          item.classList = "popup hidden";
         }
       }
-      
-      contributions.forEach(item => {
-        
-        item.addEventListener('click', (event) => {
-          remuveStyle()
-          event.target.children[0].classList = 'popup';
+
+      contributions.forEach((item) => {
+        item.addEventListener("click", (event) => {
+          remuveStyle();
+          event.target.children[0].classList = "popup";
         });
-        
       });
-      
     })
     .catch((error) => {
       console.error("Ошибка:", error);
     });
-
-  document.addEventListener("mouseover", (event) => {
-    const target = event.target;
-    if (target.classList.contains("day")) {
-      const contributions = target.dataset.contributions;
-      showTooltip(target, contributions);
-    }
-  });
 });
+
+//добавление визуальных стилей для контрибций
 function contColor(cont) {
   if (cont <= 9) {
     item.classList.add("v2");
